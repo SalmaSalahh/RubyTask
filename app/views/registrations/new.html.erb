@@ -1,0 +1,43 @@
+<center>
+  <h1>Create New Account</h1>
+</center>
+
+<%= form_with(model: @user, class: "row g-3", url: signup_path) do |form| %>
+  
+  <% if @user.errors.any? %>
+    <div class= "alert alert-danger">
+      <% @user.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <div class="mb-3">
+    <%= form.label :fullName %>
+    <label for="fullName" class="form-label"></label>
+    <%= form.text_field :fullName, class: "form-control", placeholder: "Full Name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email %>
+    <label for="inputEmail4" class="form-label"></label>
+    <%= form.text_field :email, class: "form-control", placeholder: "Email Address" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password %>
+    <label for="inputPassword4" class="form-label"></label>
+    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+  </div>
+
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupFile01">Profile Picture</label>
+    <input type="file" class="form-control" id="inputGroupFile01">
+  </div>
+
+  <div class="col-12">
+        <div class="mb-3">
+        <%= form.submit "Sign Up", class: "btn btn-primary" %>
+        </div>
+    </div>
+<% end %>
